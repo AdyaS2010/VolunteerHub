@@ -16,3 +16,26 @@ document.addEventListener("DOMContentLoaded", function() {
         // Logic to be added for matching user with volunteer opportunities (can probably be done in a different file). 
     });
 });
+
+// Function to toggle the navigation menu on small screens
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+
+// Example of how we might handle form submissions or other interactions
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Code to run when the DOM is fully loaded
+    console.log("Volunteer Hub is ready!");
+
+    // Example: Add event listeners to buttons or other elements
+    document.getElementById("intro").addEventListener("click", function() {
+        alert("Welcome to VolunteerHub!");
+    });
+
+    // More event listeners and interactions can be added here
+});
