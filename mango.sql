@@ -1,1 +1,3 @@
-
+-- Store usernames and corresponding passwords -> encrypt if necessary (security purposes)
+-- Users, volunteer opportunities, matches, etc.
+-- *Define relationships between tables
