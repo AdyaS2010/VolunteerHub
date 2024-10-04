@@ -1,4 +1,13 @@
-document.addEventListener("DOMContentLoaded", function() {
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+
+  document.addEventListener("DOMContentLoaded", function() {
     // Function to handle form submission
     document.querySelector("form").addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent form from submitting normally
@@ -16,17 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // Logic to be added for matching user with volunteer opportunities (can probably be done in a different file). 
     });
 });
-
-// Function to toggle the navigation menu on small screens
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
-
 // Example of how we might handle form submissions or other interactions
 document.addEventListener('DOMContentLoaded', (event) => {
     // Code to run when the DOM is fully loaded
