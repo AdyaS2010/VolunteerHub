@@ -9,36 +9,35 @@
 
 <body>
     <main>
-        <h1>VolunteerMatch</h1>
+        <h1>Match Me!</h1>
         <h2>Input your information below...</h2>
-        <div class="enterLocation" id="locationbar">
-            <form id="volunteerForm">
-                <input name="location" id="location" placeholder="Enter your location here..." required>
+        <form id="volunteerForm">
+            <input name="location" id="location" placeholder="Enter your location here..." required>
 
-                <label for="experience">Select an experience level...</label>
-                <select id="experience" name="experience" required>
-                    <option value="">Select an experience level</option>
-                    <option value="Young children">Young children</option>
-                    <option value="Teens">Teens</option>
-                    <option value="Adults (no prior experience necessary)">Adults (no prior experience necessary)</option>
-                    <option value="Adults with certain qualifications">Adults with certain qualifications</option>
-                </select>
-                <br>
-                <div class="categories">
-                    <label>Choose categories that interest you...</label><br>
-                    <input type="checkbox" id="children" name="children" value="Helping children">
-                    <label for="children"> Helping children</label><br>
-                    
-                    <input type="checkbox" id="healthcare" name="healthcare" value="Healthcare">
-                    <label for="healthcare"> Healthcare</label><br>
-                    
-                    <input type="checkbox" id="climatechange" name="climatechange" value="Climate Change">
-                    <label for="climatechange"> Climate Change </label>
-                </div>
+            <label for="experience">Select an experience level...</label>
+            <select id="experience" name="experience" required>
+                <option value="">Select an experience level</option>
+                <option value="Young children">Young children</option>
+                <option value="Teens">Teens</option>
+                <option value="Adults (no prior experience necessary)">Adults (no prior experience necessary)</option>
+                <option value="Adults with certain qualifications">Adults with certain qualifications</option>
+            </select>
+            <br>
+            <div class="categories">
+                <label>Choose categories that interest you...</label><br>
+                <input type="checkbox" id="children" name="children" value="Helping children">
+                <label for="children"> Helping children</label><br>
+                
+                <input type="checkbox" id="healthcare" name="healthcare" value="Healthcare">
+                <label for="healthcare"> Healthcare</label><br>
+                
+                <input type="checkbox" id="climatechange" name="climatechange" value="Climate Change">
+                <label for="climatechange"> Climate Change </label>
+            </div>
 
-                <br><input type="submit" value="Submit">
-            </form>
-        </div>
+            <br><input type="submit" value="Submit">
+        </form>
+        <div class = "results"> </div>
     </main>
     <script src="match.js"></script>
 </body>
