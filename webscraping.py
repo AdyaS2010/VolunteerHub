@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # Mock database or data source
+# Uses 'tags' with the different categories represented
 volunteer_opportunities = [
     {"location": "New York", "experience": "Young children", "categories": ["Helping children", "Healthcare"]},
     {"location": "Los Angeles", "experience": "Teens", "categories": ["Climate Change"]},
