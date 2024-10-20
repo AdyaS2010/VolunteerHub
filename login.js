@@ -38,6 +38,7 @@
 </body>
 </html>
 
+/*
 // Basic CSS (Basic styling). 
 
 body {
@@ -123,3 +124,4 @@ document.getElementById('createAccountForm').addEventListener('submit', function
 // JS done here handles form submissions (we also need somewhere to store all the data such as passwords, etc. in a database, will come to backend later on, SQL, ...) as well as displaying alerts (demonstration purposes while working and doing so). 
 // Of course, later in the course of this, we can expand on top of this and add more functionalities such as form validation, storing user data, and definitely integrating with a backend server, as well as ensuring the site is secure!!!  
 
+*/
