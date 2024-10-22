@@ -1,4 +1,45 @@
+document.getElementById('createAccountLink').addEventListener('click', function() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('createAccountContainer').style.display = 'block';
+});
+
+document.getElementById('loginLink').addEventListener('click', function() {
+    document.getElementById('createAccountContainer').style.display = 'none';
+    document.getElementById('loginForm').style.display = 'block';
+});
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    alert(`Logged in as ${username}`);
+});
+
+document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const newUsername = document.getElementById('newUsername').value;
+    const newPassword = document.getElementById('newPassword').value;
+    alert(`Account created for ${newUsername}`);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 // Again, needed something to test with (base mockup code). 
+
 //HTML File
 
 <!DOCTYPE html>
@@ -124,4 +165,5 @@ document.getElementById('createAccountForm').addEventListener('submit', function
 // JS done here handles form submissions (we also need somewhere to store all the data such as passwords, etc. in a database, will come to backend later on, SQL, ...) as well as displaying alerts (demonstration purposes while working and doing so). 
 // Of course, later in the course of this, we can expand on top of this and add more functionalities such as form validation, storing user data, and definitely integrating with a backend server, as well as ensuring the site is secure!!!  
 
+*/
 */
