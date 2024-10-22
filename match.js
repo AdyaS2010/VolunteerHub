@@ -21,13 +21,19 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Selected Categories:', selectedCategories);
 
         // Fetch volunteer opportunities based on input values
-        fetchVolunteerOpportunities(location, experience, selectedCategories);
+        fetchVolunteerOpportunities(location, experience, selectedCategories)
+            .then(() => {
+                // Optionally show a success message
+                document.getElementById('content').innerHTML = `<p>Thank you for your submission!</p>`;
 
-        // Optionally show a success message
-        document.getElementById('content').innerHTML = `<p>Thank you for your submission!</p>`;
+                // Reset the form fields
+                resetForm();
+            })
+            .catch(error => {
+                console.error('Error fetching volunteer opportunities:', error);
+            });
 
-        // Reset the form fields
-        resetForm();
+        return false; // Ensures the form does not submit
     });
 
     // Reset the form fields after submission
@@ -41,6 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
     async function fetchVolunteerOpportunities(location, experience, categories) {
         const response = await fetch(`/search?location=${encodeURIComponent(location)}&experience=${encodeURIComponent(experience)}&categories=${categories.map(c => encodeURIComponent(c)).join('&categories=')}`);
         const opportunities = await response.json();
+        
+        // Log fetched opportunities for debugging
+        console.log('Fetched Opportunities:', opportunities);
 
         // After fetching the data, call the display function to render it
         displayOpportunities(opportunities);
@@ -50,28 +59,31 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayOpportunities(opportunities) {
         // Get the results container
         const resultsContainer = document.getElementById('results');
-
+        
         // Clear any previous results
         resultsContainer.innerHTML = '';
-
+        
         // If no opportunities were found, show a message
         if (opportunities.length === 0) {
             resultsContainer.innerHTML = '<p>No volunteer opportunities found based on your criteria.</p>';
             return;
         }
-
+        
         // Loop through the opportunities and create HTML for each
         opportunities.forEach(opportunity => {
             const opportunityElement = document.createElement('div');
             opportunityElement.classList.add('opportunity');
-
             opportunityElement.innerHTML = `
                 <h3>Location: ${opportunity.location}</h3>
                 <p>Experience: ${opportunity.experience}</p>
                 <p>Categories: ${opportunity.categories.join(', ')}</p>
             `;
+            
             // Append the new opportunity element to the results container
             resultsContainer.appendChild(opportunityElement);
         });
+
+        // Log results container content for debugging
+        console.log('Results Container:', resultsContainer.innerHTML);
     }
 });
