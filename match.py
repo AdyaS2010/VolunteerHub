@@ -28,7 +28,6 @@ def search_opportunities():
 
     # Use Chrome API (Selenium) to fetch data from a website
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-
     driver.get('https://example-volunteer-opportunities-site.com/search')
 
     # Enter search parameters
