@@ -1,0 +1,72 @@
+ /* general text rules */
+header{
+    text-align: center;
+    font-size: x-large;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-weight: 800;
+}
+h1 {
+    text-align: left;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: large;
+    font-weight: 700;
+    margin-top: 25px;
+    margin-bottom: 15px
+}
+h2{
+    text-align: left;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: medium;
+    font-weight: 600;
+    margin-top: 25px;
+}
+p{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    text-align: left;
+    margin: 75px, 100px, 75px, 100px;
+    font-size: medium;
+}
+ul{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    margin: 75px, 100px, 75px, 100px;
+    font-size: medium;
+}
+/*end general text rules*/
+
+/*division code home*/
+.heading{
+    text-align: center;
+}
+
+/*top navigation bar*/
+.topnav {
+  background-color: #1691f0;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  overflow: hidden;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: medium;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #fafafa;
+  color: #1691f0;
+}
+
+.topnav .icon {
+  display: none;
+}
+/*end top navigation bar*/
