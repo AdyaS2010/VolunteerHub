@@ -1,70 +1,51 @@
-// Define the main application object
-const app = {
-    // Initialize the application
-    init: function() {
-        this.cacheDOM();
-        this.bindEvents();
-        this.render();
-    },
-    // Cache DOM elements for later use
-    cacheDOM: function() {
-        this.volunteerList = document.getElementById('volunteer-list');
-        this.addVolunteerForm = document.getElementById('add-volunteer-form');
-        this.volunteerNameInput = document.getElementById('volunteer-name');
-        this.volunteerInterestInput = document.getElementById('volunteer-interest');
-    },
-    // Bind event listeners to DOM elements
-    bindEvents: function() {
-        this.addVolunteerForm.addEventListener('submit', this.addVolunteer.bind(this));
-    },
-    // Render the initial state of the application
-    render: function() {
-        this.volunteerList.innerHTML = '';
-        this.volunteers.forEach(volunteer => {
-            const li = document.createElement('li');
-            li.textContent = `${volunteer.name} - ${volunteer.interest}`;
-            this.volunteerList.appendChild(li);
-        });
-    },
-    // Add a new volunteer to the list
-    addVolunteer: function(event) {
-        event.preventDefault();
-        const name = this.volunteerNameInput.value;
-        const interest = this.volunteerInterestInput.value;
-        if (name && interest) {
-            this.volunteers.push({ name, interest });
-            this.render();
-            this.volunteerNameInput.value = '';
-            this.volunteerInterestInput.value = '';
-        }
-    },
-    // List of volunteers
-    volunteers: []
-};
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
 
-// Initialize the application when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    app.init();
+function loadPage(page) {
+    const content = document.getElementById('content');
+    fetch(page)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            content.innerHTML = data;
+            const activeLink = document.querySelector('.topnav a.active');
+            if (activeLink) activeLink.classList.remove('active');
+            const newActiveLink = document.querySelector(`.topnav a[href="#${page.split('.')[0]}"]`);
+            if (newActiveLink) newActiveLink.classList.add('active');
+            // Ensure script handling is general and only loads existing scripts
+            if (page !== 'home.html' && page !== 'about.html') {
+                const script = document.createElement('script');
+                script.src = `${page.split('.')[0]}.js`; // Load script corresponding to the page
+                content.appendChild(script);
+            }
+        })
+        .catch(error => {
+            console.error('Error loading page:', error);
+            content.innerHTML = `<p>Error loading content.</p>`;
+        });
+}
+
+// Attach event listeners to links
+const links = document.querySelectorAll('.topnav a:not(.icon)');
+links.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default anchor behavior
+        const page = this.getAttribute('href').substring(1) + '.html'; // Get page name
+        loadPage(page); // Load the corresponding page
+    });
 });
 
-// *When HTML looks something like this: 
-/*
-  <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Volunteering App</title>
-    </head>
-    <body>
-        <h1>Volunteering Opportunities</h1>
-        <form id="add-volunteer-form">
-            <input type="text" id="volunteer-name" placeholder="Volunteer Name" required>
-            <input type="text" id="volunteer-interest" placeholder="Volunteer Interest" required>
-            <button type="submit">Add Volunteer</button>
-        </form>
-        <ul id="volunteer-list"></ul>
-        <script src="app.js"></script>
-    </body>
-    </html>
-*/ 
+// Load the default page when the document loads
+window.onload = function() {
+    loadPage('home.html'); // Ensure you have this file or change to another default
+};
