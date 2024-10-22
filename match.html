@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
     <main>
         <h1>Match Me!</h1>
         <h2>Input your information below...</h2>
-        <form id="volunteerForm">
+        <form id="volunteerForm" onsubmit="return false;">
+            <label for="location">Enter your location here...</label>
             <input name="location" id="location" placeholder="Enter your location here..." required>
-
+            
             <label for="experience">Select an experience level...</label>
             <select id="experience" name="experience" required>
                 <option value="">Select an experience level</option>
@@ -23,21 +23,25 @@
                 <option value="Adults with certain qualifications">Adults with certain qualifications</option>
             </select>
             <br>
+
             <div class="categories">
                 <label>Choose categories that interest you...</label><br>
-                <input type="checkbox" id="children" name="children" value="Helping children">
-                <label for="children"> Helping children</label><br>
-                
-                <input type="checkbox" id="healthcare" name="healthcare" value="Healthcare">
-                <label for="healthcare"> Healthcare</label><br>
-                
-                <input type="checkbox" id="climatechange" name="climatechange" value="Climate Change">
-                <label for="climatechange"> Climate Change </label>
+                <label for="children">
+                    <input type="checkbox" id="children" name="children" value="Helping children">
+                    Helping children
+                </label><br>
+                <label for="healthcare">
+                    <input type="checkbox" id="healthcare" name="healthcare" value="Healthcare">
+                    Healthcare
+                </label><br>
+                <label for="climatechange">
+                    <input type="checkbox" id="climatechange" name="climatechange" value="Climate Change">
+                    Climate Change
+                </label>
             </div>
-
             <br><input type="submit" value="Submit">
         </form>
-        <div class = "results"> </div>
+        <div id="results"></div> <!-- Results container -->
     </main>
     <script src="match.js"></script>
 </body>
