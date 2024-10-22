@@ -1,3 +1,4 @@
+// Function to toggle the navigation menu on small screens
 function myFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
