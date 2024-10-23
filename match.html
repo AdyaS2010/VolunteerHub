@@ -7,14 +7,13 @@
     <link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <main>
         <h1>Match Me!</h1>
         <h2>Input your information below...</h2>
-        <form id="volunteerForm" onsubmit="return false;">
-            <label for="location">Enter your location here...</label>
-            <input name="location" id="location" placeholder="Enter your location here..." required>
+        <form id="volunteerForm">
+            <label for="location" class="form-label">Enter your location here...</label>
+            <input name="location" class="styled-input" id="location" placeholder="Enter your location here..." required>
             
-            <label for="experience">Select an experience level...</label>
+            <label for="experience" class="form-label">Select an experience level...</label>
             <select id="experience" name="experience" required>
                 <option value="">Select an experience level</option>
                 <option value="Young children">Young children</option>
@@ -25,24 +24,84 @@
             <br>
 
             <div class="categories">
-                <label>Choose categories that interest you...</label><br>
-                <label for="children">
-                    <input type="checkbox" id="children" name="children" value="Helping children">
+                <label class="form-label">Choose categories that interest you...</label><br>
+                <label for="children" class="custom-checkbox">
+                    <input type="checkbox" id="children" name="categories" value="Helping children"/>
+                    <span class="checkmark"></span>
                     Helping children
                 </label><br>
-                <label for="healthcare">
-                    <input type="checkbox" id="healthcare" name="healthcare" value="Healthcare">
+                <label for="healthcare" class="custom-checkbox">
+                    <input type="checkbox" id="healthcare" name="categories" value="Healthcare"/>
+                    <span class="checkmark"></span>
                     Healthcare
                 </label><br>
-                <label for="climatechange">
-                    <input type="checkbox" id="climatechange" name="climatechange" value="Climate Change">
+                <label for="climatechange" class="custom-checkbox">
+                    <input type="checkbox" id="climatechange" name="categories" value="Climate Change"/>
+                    <span class="checkmark"></span>
                     Climate Change
                 </label>
             </div>
-            <br><input type="submit" value="Submit">
+            <br><input type="submit" class="submit-button" value="Submit">
         </form>
-        <div id="results"></div> <!-- Results container -->
-    </main>
-    <script src="match.js"></script>
+        <div id="results">
+            <table id="resultsTable" style="display: none;">
+                <tr>
+                    <th>Organization</th>
+                    <th>Description</th>
+                    <th>Link</th>
+                </tr>
+                <tr>
+                    <td id="org1"></td>
+                    <td id="desc1"></td>
+                    <td id="link1"></td>
+                </tr>
+                 <tr>
+                    <td id="org2"></td>
+                    <td id="desc2"></td>
+                    <td id="link2"></td>
+                </tr>
+                <tr>
+                    <td id="org3"></td>
+                    <td id="desc3"></td>
+                    <td id="link3"></td>
+                </tr>
+                <tr>
+                    <td id="org4"></td>
+                    <td id="desc4"></td>
+                    <td id="link4"></td>
+                </tr>
+                <tr>
+                    <td id="org5"></td>
+                    <td id="desc5"></td>
+                    <td id="link5"></td>
+                </tr>
+                <tr>
+                    <td id="org6"></td>
+                    <td id="desc6"></td>
+                    <td id="link6"></td>
+                </tr>
+                <tr>
+                    <td id="org7"></td>
+                    <td id="desc7"></td>
+                    <td id="link7"></td>
+                </tr>
+                <tr>
+                    <td id="org8"></td>
+                    <td id="desc8"></td>
+                    <td id="link8"></td>
+                </tr>
+                <tr>
+                    <td id="org9"></td>
+                    <td id="desc9"></td>
+                    <td id="link9"></td>
+                </tr>
+                <tr>
+                    <td id="org10"></td>
+                    <td id="desc10"></td>
+                    <td id="link10"></td>
+                </tr>
+            </table>
+        </div> <!-- Results container -->
+      <script src="match.js"></script>
 </body>
 </html>
