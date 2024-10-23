@@ -1,77 +1,77 @@
-document.addEventListener('DOMContentLoaded', function() {
-    alert('JavaScript is running'); // Confirm script load
+const form = document.getElementById('volunteerForm');
 
-    const form = document.getElementById('volunteerForm');
-    const locationInput = document.getElementById('location');
-    const experienceSelect = document.getElementById('experience');
-    const categories = document.querySelectorAll('.categories input[type="checkbox"]');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert('Form submission captured'); // Confirm form submission
+    const formData = new FormData(form);
+    const location = formData.get('location');
+    const experience = formData.get('experience');
+    const categories = formData.getAll('categories'); 
+    //console.log(location);    
+    //console.log(experience);
+    //console.log(categories);
 
-        const location = locationInput.value;
-        const experience = experienceSelect.value;
-        const selectedCategories = Array.from(categories)
-            .filter(checkbox => checkbox.checked)
-            .map(checkbox => checkbox.value);
+     fetchVolunteerOpportunities(location, experience, categories)
+            .then(result => {
+                // Optionally show a success message
+                //document.getElementById('content').innerHTML = `<p>Thank you for your submission!</p>`;
+		resetForm();
+		const resultArray = result.items;
+		console.log(result);
+		//console.log(resultArray);
+		const resultsTable = document.getElementById('resultsTable'); 
+		resultsTable.style.display = 'table';
+		let c=1;    
+		for (let i = 0; i < resultArray.length; i++) {
+    			//console.log(resultArray[i]);
+			var organization = document.getElementById("org" + (c));
+			organization.innerHTML = resultArray[i].title; 
+			var desc = document.getElementById("desc" + (c));
+			desc.innerHTML = resultArray[i].htmlSnippet;
+			var link = document.getElementById("link" + (c));
+			//link.innerHTML = resultArray[i].link;
 
-        console.log('Form submission captured');
-        console.log('Location:', location);
-        console.log('Experience:', experience);
-        console.log('Selected Categories:', selectedCategories);
-
-        fetchVolunteerOpportunities(location, experience, selectedCategories)
-            .then(() => {
-                document.getElementById('content').innerHTML = `<p>Thank you for your submission!</p>`;
-                resetForm();
+			const customlink = document.createElement("a");
+			customlink.href = resultArray[i].link; // Set the URL
+			customlink.textContent = resultArray[i].link; // Set the link text
+			customlink.target = "_blank"; // Optional: open in a new tab
+			
+			// Append the link to the selected cell
+			link.appendChild(customlink);
+			
+			++c;
+		}                
+		    // Reset the form fields
             })
             .catch(error => {
                 console.error('Error fetching volunteer opportunities:', error);
             });
+	
 
-        return false;
-    });
+  });
 
-    function resetForm() {
-        locationInput.value = '';
-        experienceSelect.selectedIndex = 0;
-        categories.forEach(checkbox => checkbox.checked = false);
-    }
-
+  // Fetch volunteer opportunities from the google
     async function fetchVolunteerOpportunities(location, experience, categories) {
-        alert('Fetching volunteer opportunities'); // Confirm fetch initiation
-        console.log('Fetching volunteer opportunities');
-        const response = await fetch(`/search?location=${encodeURIComponent(location)}&experience=${encodeURIComponent(experience)}&categories=${categories.map(c => encodeURIComponent(c)).join('&categories=')}`);
-        const opportunities = await response.json();
+	//const response = await fetch(`https://www.google.com/search?location=${encodeURIComponent(location)}&experience=${encodeURIComponent(experience)}&categories=${categories.map(c => encodeURIComponent(c)).join('&categories=')}`);
+	//const opportunities = await response.json();
+	    
+	const apiKey = 'AIzaSyC182BoQ5Y8xmYCKDQjQ0D5QIMfbXdScqs';
+	const searchEngineId = 'd180d7018dd9246dc';
+	const categoryString = categories.join(' ');
+	const query = `${location} ${experience} ${categoryString}`;
+	    
+	console.log(query);
+   	const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${searchEngineId}&q=${encodeURIComponent(query)}`;
+	//const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${searchEngineId}&location=${encodeURIComponent(location)}&experience=${encodeURIComponent(experience)}&categories=${categories.map(c => encodeURIComponent(c)).join('&categories=')}`);
 
-        console.log('Fetched Opportunities:', opportunities);
-        displayOpportunities(opportunities);
+	//console.log(url);
+	const response = await fetch(url);
+	const opportunities = await response.json();
+	;
+	return opportunities;    
+
     }
-
-    function displayOpportunities(opportunities) {
-        console.log('Displaying opportunities');
-        const resultsContainer = document.getElementById('results');
-        resultsContainer.innerHTML = '';
-
-        if (opportunities.length === 0) {
-            resultsContainer.innerHTML = '<p>No volunteer opportunities found based on your criteria.</p>';
-            console.log('No volunteer opportunities found');
-            return;
-        }
-
-        opportunities.forEach(opportunity => {
-            const opportunityElement = document.createElement('div');
-            opportunityElement.classList.add('opportunity');
-            opportunityElement.innerHTML = `
-                <h3>Location: ${opportunity.location}</h3>
-                <p>Experience: ${opportunity.experience}</p>
-                <p>Categories: ${opportunity.categories.join(', ')}</p>
-            `;
-
-            resultsContainer.appendChild(opportunityElement);
-        });
-
-        console.log('Results Container:', resultsContainer.innerHTML);
-    }
-});
+	
+	function resetForm() {
+	document.getElementById('volunteerForm').reset();   
+	}
