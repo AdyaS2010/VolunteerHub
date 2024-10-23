@@ -1,0 +1,241 @@
+/* General text rules */
+header {
+    text-align: center;
+    font-size: x-large;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+h2 {
+    text-align: center;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+p {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    text-align: center;
+    margin: 75px, 100px, 75px, 100px;
+    font-size: medium;
+}
+
+ table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+/* End general text rules */
+
+/* Division code home */
+.intro {
+    margin: 75px, 100px, 75px, 100px;
+    border-style: inset;
+}
+
+.login {
+    margin: 75px, 100px, 75px, 100px;
+    border-style: solid;
+    border-radius: 30px;
+    background-color: lightskyblue;
+    padding: 15px;
+    text-align: center;
+}
+
+/* End division code home */
+
+/* Top navigation bar */
+.topnav {
+    background-color: #1691f0;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    overflow: hidden;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: medium;
+}
+
+.topnav a:hover {
+    background-color: #dddddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #fafafa;
+    color: #1691f0;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+/* Basic styles for the form */
+form {
+    margin-bottom: 20px;
+}
+
+.categories {
+    margin-top: 10px;
+}
+
+/* Style for the results container */
+#results {
+    margin-top: 20px;
+}
+
+/* Style for each volunteer opportunity */
+.opportunity {
+    border: 1px solid #cccccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.opportunity h3 {
+    margin-top: 0;
+}
+
+.opportunity p {
+    margin: 5px 0;
+}
+
+/* Basic styling for the submit button */
+.submit-button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding around the text */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline block for spacing */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Margins for spacing */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Hover effect */
+.submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Active effect */
+.submit-button:active {
+    background-color: #3e8e41; /* Even darker green when pressed */
+}
+
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-checkbox input {
+  display: none; /* Hide the default checkbox */
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #3498db; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+  position: relative;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-checkbox input:checked + .checkmark {
+  background-color: #007bff; /* Background color when checked */
+}
+
+.checkmark::after {
+  content: '';
+  position: absolute;
+  display: none; /* Hidden by default */
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+  display: block; /* Show when checked */
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0; /* Create a checkmark */
+  transform: rotate(45deg); /* Rotate to make a checkmark */
+}
+
+.form-label {
+    font-weight: bold;
+    color: #000000;
+    margin-top: 10px;
+    display: inline-block; /* keeps it inline with the input */
+}
+
+.styled-input {
+    width: 300px; /* Width of the input */
+    padding: 10px; /* Space inside the input */
+    border: 2px solid #3498db; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    transition: border-color 0.3s; /* Transition effect for border color */
+}
+
+.styled-input:focus {
+    border-color: #2980b9; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.styled-input::placeholder {
+    color: #a9a9a9; /* Placeholder text color */
+    opacity: 1; /* Ensure the placeholder is fully opaque */
+}
+
+ select {
+            width: 300px; 
+            padding: 10px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            background-color: #FFFFFF;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        /* Change border color on focus */
+        select:focus {
+            border-color: #3e8e41;
+            outline: none; /* Remove the default outline */
+        }
+
+        /* Styling options (may vary by browser) */
+        option {
+            padding: 10px; /* This may not always apply */
+        }
+
+/* End top navigation bar */
